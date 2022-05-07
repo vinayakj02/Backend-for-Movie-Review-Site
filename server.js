@@ -9,53 +9,75 @@ app.set('view engine', 'ejs')
 app.get('/',(req, res) => {
     console.log('here')
     // res.render('index', {text: 'this is text'})
-    res.send(keyss.config)
-    console.log(keyss.config)
+    res.render('filmPage')
 })
 
 app.get('/try',(req,res) =>{
     res.send("")
 })
 
-const TMDB_API_KEY_1 = "1cf50e6248dc270629e802686245c2c8"
-const fetchMovies = async (page) => {
-    try {
-      let result;
-      await axios
-        .get(
-            `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1cf50e6248dc270629e802686245c2c8`
-        //   `https://api.themoviedb.org/3/movie/popular?api_key=1cf50e6248dc270629e802686245c2c8`
-        )
-        .then((response) => {
-          result = response.data.results;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      return result;
-    } catch (error) {
-      console.error(error);
+
+
+class Movie {
+    constructor(MovieObj) {
+        this.title = MovieObj.original_title
+        this.desc = MovieObj.overview
+        this.date = MovieObj.release_date
+        this.avgRating = MovieObj.vote_average
+        this.voteCount = MovieObj.vote_count
+        this.lang = MovieObj.original_language
+        this.genres = MovieObj.genre_ids
+        this.poster = "https://image.tmdb.org/t/p/original" + MovieObj.poster_path
     }
-  };
+}
 
-  app.get('/movies', async (req, res, next)=>{
-    try {
-        const {page} = req.query;
-        const data = await fetchMovies(page);
 
-        return res.status(200).json({
-        //   status:200,
-        //   message : 'success',
-        //   message: `${data.length} movies found`, 
-          data
-        })
-      } catch (err) {
-        return next(err);
+const TMDB_API_KEY_1 = "1cf50e6248dc270629e802686245c2c8"
+
+// // const userRouter = require('./routes/users')
+const filmRouter = require('./routes/film')
+
+// app.use('/users', userRouter)
+app.use('/film',filmRouter)
+
+
+
+
+
+
+
+
+
+
+const apiKEY = "0b43b249ac283cc6cc7a6182942d3853"
+const MovieDB = require('node-themoviedb');
+
+const mdb = new MovieDB(apiKEY);
+
+
+
+const fetchMovies = async (MovieId) => {
+  console.log(MovieId)
+  try {
+    const args = {
+      pathParameters: {
+        movie_id: MovieId,
+      },
+    };
+    const movie = await mdb.movie.getDetails(args);
+    console.log(movie);
+    /*
+      {
+        data: Object. Parsed json data of response
+        headers: Object. Headers of response
       }
-})
+    */
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-const userRouter = require('./routes/users')
-
-app.use('/users', userRouter)
+const relData = fetchMovies(384018);
+console.log(relData)
 
 app.listen(3000)
