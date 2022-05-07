@@ -13,7 +13,9 @@ app.get('/', (req, res)=>{
 
 
 const filmRoute = require('./routes/film')
-app.use('/film',filmRoute)
+const popFilmRoute = require('./routes/popFilm')
 
+app.use('/film',filmRoute)
+app.use('/popFilm',popFilmRoute)
 
 app.listen(3000)
