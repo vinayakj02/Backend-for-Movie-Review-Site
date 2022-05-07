@@ -44,6 +44,7 @@ img{
     float: left;
     margin: 2% 1%;
     border: solid black 2px;
+    border-color: black;
 }
 .carousel-item{
     /* width: 90; */
@@ -270,7 +271,7 @@ footer{
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <div style="margin-left: 5%;" class="card">
+                        <div style="margin-left: 5%;" class="card" style="border :rgb(17, 16, 16)">
                             <!-- <img src="..\watchlist-page\images\alien-3.jpg" class="card-img" alt="..."> -->
                             <img src= <%= storeMovie[arrayOfID[0]]  %>  class="card-img" alt="...">
                         </div>
@@ -283,8 +284,8 @@ footer{
                             <img src=<%= storeMovie[arrayOfID[2]]  %>  class="card-img" alt="...">
                         </div>
                         <div class="card">
-                            <!-- <img src="..\watchlist-page\images\scott-p.jpg" class="card-img" alt="...">
-                            <img src=<%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="..."> -->
+                            <!-- <img src="..\watchlist-page\images\scott-p.jpg" class="card-img" alt="..."> -->
+                            <img src=<%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="...">
                         </div>
                       </div>
                       <div class="carousel-item">
