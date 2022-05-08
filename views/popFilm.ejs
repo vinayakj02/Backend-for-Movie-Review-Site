@@ -162,7 +162,6 @@ footer{
 
     </style>
 
-
     <body>
         
         <div class="navi">
@@ -258,7 +257,7 @@ footer{
                   <form style="width: 24%;margin-left: 5%;" class="d-flex">
                     <p style="width: 50%;">Find a film</p>
                     <input style="margin-left: 2%;height: 25px; width: 90%;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-
+                    <button style="padding: 2px; background-color: greenyellow;">Search</button>
                   </form>
             </div>
 
@@ -273,37 +272,53 @@ footer{
                       <div class="carousel-item active">
                         <div style="margin-left: 5%;" class="card" style="border :rgb(17, 16, 16)">
                             <!-- <img src="..\watchlist-page\images\alien-3.jpg" class="card-img" alt="..."> -->
-                            <img src= <%= storeMovie[arrayOfID[0]]  %>  class="card-img" alt="...">
+                            <a href="http://localhost:3000/film?id=<%=arrayOfID[0] %>">
+                                <img src= <%= storeMovie[arrayOfID[0]]  %>  class="card-img" alt="...">
+                            </a>
                         </div>
                         <div class="card">
                             <!-- <img src="..\watchlist-page\images\dunkirk.jpg" class="card-img" alt="..."> -->
-                            <img src=<%= storeMovie[arrayOfID[1]]  %>  class="card-img" alt="...">
+                            <a href="http://localhost:3000/film?id=<%=arrayOfID[1] %>">
+                                <img src= <%= storeMovie[arrayOfID[1]]  %>  class="card-img" alt="...">
+                            </a>
                         </div>
                         <div class="card">
                             <!-- <img src="..\watchlist-page\images\superbad.jpg" class="card-img" alt="..."> -->
-                            <img src=<%= storeMovie[arrayOfID[2]]  %>  class="card-img" alt="...">
+                            <a href="http://localhost:3000/film?id=<%=arrayOfID[2] %>">
+                                <img src= <%= storeMovie[arrayOfID[2]]  %>  class="card-img" alt="...">
+                            </a>
                         </div>
                         <div class="card">
                             <!-- <img src="..\watchlist-page\images\scott-p.jpg" class="card-img" alt="..."> -->
-                            <img src=<%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="...">
+                            <a href="http://localhost:3000/film?id=<%=arrayOfID[3] %>">
+                                <img src= <%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="...">
+                            </a>
                         </div>
                       </div>
                       <div class="carousel-item">
                             <div class="card">
                                 <!-- <img src="..\watchlist-page\images\drive.jpg" class="card-img" alt="..."> -->
-                                <img src=<%= storeMovie[arrayOfID[4]]  %>  class="card-img" alt="...">
+                                <a href="http://localhost:3000/film?id=<%=arrayOfID[4] %>">
+                                    <img src= <%= storeMovie[arrayOfID[4]]  %>  class="card-img" alt="...">
+                                </a>
                             </div>
                             <div class="card">
                                 <!-- <img src="..\watchlist-page\images\kimi.jpg" class="card-img" alt="..."> -->
-                                <img src=<%= storeMovie[arrayOfID[5]]  %>  class="card-img" alt="...">
+                                <a href="http://localhost:3000/film?id=<%=arrayOfID[5] %>">
+                                    <img src= <%= storeMovie[arrayOfID[5]]  %>  class="card-img" alt="...">
+                                </a>
                             </div>
                             <div class="card">
                                 <!-- <img src="..\watchlist-page\images\tenet.jpg" class="card-img" alt="..."> -->
-                                <img src=<%= storeMovie[arrayOfID[6]]  %>  class="card-img" alt="...">
+                                <a href="http://localhost:3000/film?id=<%=arrayOfID[6] %>">
+                                    <img src= <%= storeMovie[arrayOfID[6]]  %>  class="card-img" alt="...">
+                                </a>
                             </div>
                             <div class="card">
                                 <!-- <img src="..\watchlist-page\images\social-network.jpg" class="card-img" alt="..."> -->
-                                <img src=<%= storeMovie[arrayOfID[7]]  %>  class="card-img" alt="...">
+                                <a href="http://localhost:3000/film?id=<%=arrayOfID[7] %>">
+                                    <img src= <%= storeMovie[arrayOfID[7]]  %>  class="card-img" alt="...">
+                                </a>
                             </div>
                       </div>
                     </div>
