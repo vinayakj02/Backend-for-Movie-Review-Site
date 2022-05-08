@@ -1,29 +1,28 @@
 {
-  "name": "backend-for-movie22222",
+  "name": "log",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "app.js",
   "dependencies": {
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
-    "ejs": "^3.1.7",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.7.4",
     "express": "^4.18.1",
-    "express-session": "^1.17.2",
-    "mongoose": "^6.3.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.4.5",
+    "mongoose-findorcreate": "^3.0.0",
     "node-fetch": "^3.2.4",
     "node-themoviedb": "^0.2.8",
-    "passport": "^0.5.2",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.0.0"
+    "passport-local-mongoose": "^5.0.1"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
