@@ -26,10 +26,11 @@ class Movie {
       this.tagline = MovieObj.tagline
   }
 }
-
-
+const https = require('https')
 router.get('/', (req, res)=>{
     var curr_mov_id = req.query.id;
+
+    var movieYoutubeLink = "";
     (async () => {
         try {
           const args = {
@@ -37,9 +38,11 @@ router.get('/', (req, res)=>{
               movie_id: curr_mov_id,
             },
           };
+          const movieYoutubeId = await mdb.movie.getVideos(args);
+          movieYoutubeLink = "https://youtube.com/embed/" + movieYoutubeId['data']['results'][0]['key'];
           const movie = await mdb.movie.getDetails(args);
           const movieObj = new Movie(movie['data']);
-          res.render('eachMovie', {title : movieObj.title, desc : movieObj.desc, date : movieObj.date, avgRating : movieObj.avgRating, voteCount : movieObj.voteCount, lang : movieObj.lang, genres : movieObj.genres, poster : movieObj.poster})
+          res.render('eachMovie', {title : movieObj.title, desc : movieObj.desc, date : movieObj.date, avgRating : movieObj.avgRating, voteCount : movieObj.voteCount, lang : movieObj.lang, genres : movieObj.genres, poster : movieObj.poster, movieYoutubeLink : movieYoutubeLink })
         } catch (error) {
           console.error(error);
         }

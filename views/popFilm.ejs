@@ -16,6 +16,23 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" 
         crossorigin="anonymous"></script>
+
+        <script>
+
+            $().dropdown('update')
+            $().dropdown('toggle')
+            function onSearch(){
+                var searchVal = document.getElementById("search").value;
+                if (searchVal==""){
+                    var yearSearch = document.getElementById("yearSearch").value;
+                    var genreSearch = document.getElementById("genreSearch").value;
+                    var ratingSearch = document.getElementById("ratingSearch").value;    
+                    window.location.replace("http://localhost:3000/search?keyword=" + searchVal);
+                }
+                // console.log(searchVal);
+                window.location.replace("http://localhost:3000/searchBrowse?year=" + yearSearch + "&genre=" + genreSearch + "&rating=" + ratingSearch);
+            }
+        </script>
     </head>
 
 
@@ -205,59 +222,20 @@ footer{
         <div class="container">
             <div class="row navbar-text dp-fp">
                 <p style="width:10%; color: #9ABBCC;">Browse by</p>
-                <div style="width:6.5%;" class="dropdown">
-                    <button class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: green; background-color: #2C3440; border: none;">
-                      Year
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">All</a></li>
-                      <li><a class="dropdown-item" href="#">Upcoming</a></li>
-                      <li><a class="dropdown-item" href="#">2020s</a></li>
-                      <li><a class="dropdown-item" href="#">2010s</a></li>
-                      <li><a class="dropdown-item" href="#">2000s</a></li>
-                      <li><a class="dropdown-item" href="#">1990s</a></li>
-                    </ul>
-                  </div>
+                
+                    
+                    <input style="margin-left: 2%;height: 25px; width: 75px;" id = "yearSearch" class="form-control me-2" type="search" placeholder=" Year" aria-label="Search">
 
-                  <div style="width:7.7%;" class="dropdown">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: green; background-color: #2C3440; border: none;">
-                      Rating
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Highest rated first</a></li>
-                      <li><a class="dropdown-item" href="#">Lowest rated first</a></li>
-                      <li><a class="dropdown-item" href="#">Top 250 narrative features</a></li>
-                    </ul>
-                  </div>
+                  
 
-                  <div style="width:8.4%;" class="dropdown">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: green; background-color: #2C3440; border: none;">
-                      Popular
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">All time</a></li>
-                      <li><a class="dropdown-item" href="#">This year</a></li>
-                      <li><a class="dropdown-item" href="#">This month</a></li>
-                    </ul>
-                  </div>
+                    <input style="margin-left: 2%;height: 25px; width: 75px;" id = "genreSearch" class="form-control me-2" type="search" placeholder="genre" aria-label="Search">
 
-                  <div style="width:7%;" class="dropdown">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: green; background-color: #2C3440; border: none;">
-                      Genre
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Adventure</a></li>
-                      <li><a class="dropdown-item" href="#">Suspense</a></li>
-                      <li><a class="dropdown-item" href="#">Thriller</a></li>
-                      <li><a class="dropdown-item" href="#">Romance</a></li>
-                      <li><a class="dropdown-item" href="#">Comedy</a></li>
-                    </ul>
-                  </div>    
+                  <input style="margin-left: 2%;height: 25px; width: 75px;" id = "ratingSearch" class="form-control me-2" type="search" placeholder="rating" aria-label="Search">
+    
                   <form style="width: 24%;margin-left: 5%;" class="d-flex">
                     <p style="width: 50%;">Find a film</p>
-                    <input style="margin-left: 2%;height: 25px; width: 90%;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button style="padding: 2px; background-color: greenyellow;">Search</button>
+                    <input style="margin-left: 2%;height: 25px; width: 90%;" id = "search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button onclick = "onSearch()"  style="padding: 2px; background-color: greenyellow;" type="button">Search</button>
                   </form>
             </div>
 
@@ -341,20 +319,17 @@ footer{
             <div class="row">
                 <div class="col-lg-7">
                     <div style="float: left;" class="reviews">
-    
-                        <img class="review-image col-lg-3" src="..\watchlist-page\images\tenet.jpg" alt="">
+                        
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[0] %>">
+                        <img class="review-image col-lg-3" src=<%= storeMovie[arrayOfID[0]]  %> alt="">
+                        </a>
+
                         <div class="comment col-lg-9">
-                            <p><b class="head-name">The Batman </b><span class="year">2022</span></p>
+                            <p><b class="head-name"><%= movieNames[0] %> </b><span class="year">2022</span></p>
                             <div class="content">
-                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; Patrick Williams&ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
-                                <p>The first half of this is pretty much perfect, from the madcap editing
-                                     and storytelling to the magnificently realized musical numbers. The 
-                                     second half took a bit of a tumble into bland melodrama (and the 
-                                     duke is kind of a supreme dumbass for not realizing the play was 
-                                     about him sooner) but overall it's a movie that I CANNOT believe I 
-                                     liked as much as I did. </p>
-                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>9970 likes</span> </p>
-                                
+                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; <%= movRev1.author %> &ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
+                                <p> <%= movRev1.content %></p>
+                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>670 likes</span> </p>
                                 <hr>
                             </div>
                         </div>
@@ -362,20 +337,17 @@ footer{
                     </div>
     
                     <div style="float: left;" class="reviews">
-    
-                        <img class="review-image col-lg-3" src="..\watchlist-page\images\scott-p.jpg" alt="">
+                        
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[1] %>">
+                        <img class="review-image col-lg-3" src=<%= storeMovie[arrayOfID[1]]  %> alt="">
+                        </a>
+
                         <div class="comment col-lg-9">
-                            <p><b class="head-name">The Batman </b><span class="year">2022</span></p>
+                            <p><b class="head-name"><%= movieNames[1] %> </b><span class="year">2022</span></p>
                             <div class="content">
-                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; Patrick Williams&ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
-                                <p>The first half of this is pretty much perfect, from the madcap editing
-                                     and storytelling to the magnificently realized musical numbers. The 
-                                     second half took a bit of a tumble into bland melodrama (and the 
-                                     duke is kind of a supreme dumbass for not realizing the play was 
-                                     about him sooner) but overall it's a movie that I CANNOT believe I 
-                                     liked as much as I did. </p>
-                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>9970 likes</span> </p>
-                                
+                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; <%= movRev2.author %> &ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
+                                <p> <%= movRev2.content %></p>
+                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>4970 likes</span> </p>
                                 <hr>
                             </div>
                         </div>
@@ -383,20 +355,17 @@ footer{
                     </div>
     
                     <div style="float: left;" class="reviews">
-    
-                        <img class="review-image col-lg-3" src="..\watchlist-page\images\kimi.jpg" alt="">
+                        
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[2] %>">
+                        <img class="review-image col-lg-3" src=<%= storeMovie[arrayOfID[2]]  %> alt="">
+                        </a>
+
                         <div class="comment col-lg-9">
-                            <p><b class="head-name">The Batman </b><span class="year">2022</span></p>
+                            <p><b class="head-name"><%= movieNames[2] %> </b><span class="year">2022</span></p>
                             <div class="content">
-                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; Patrick Williams&ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
-                                <p>The first half of this is pretty much perfect, from the madcap editing
-                                     and storytelling to the magnificently realized musical numbers. The 
-                                     second half took a bit of a tumble into bland melodrama (and the 
-                                     duke is kind of a supreme dumbass for not realizing the play was 
-                                     about him sooner) but overall it's a movie that I CANNOT believe I 
-                                     liked as much as I did. </p>
-                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>9970 likes</span> </p>
-                                
+                                <p class="username"><i class="icon fas fa-user-circle"></i> &nbsp; <%= movRev3.author %> &ensp;<i class="icon far fa-comment-alt"></i>&ensp;61</p>
+                                <p> <%= movRev3.content %></p>
+                                <p class="likes"><i class="icon fas fa-heart"></i>&ensp;Like review&emsp; <span>7023 likes</span> </p>
                                 <hr>
                             </div>
                         </div>
@@ -409,12 +378,31 @@ footer{
                     <div style="float: left;" class="crew-picks">
                         <p>CREW PICKS</p>
                         <hr>
-                        <img class="crew-pick-img" src="..\watchlist-page\images\tenet.jpg" alt="">
-                        <img class="crew-pick-img" src="..\watchlist-page\images\kimi.jpg" alt="">
-                        <img class="crew-pick-img" src="..\watchlist-page\images\superbad.jpg" alt="">
-                        <img class="crew-pick-img" src="..\watchlist-page\images\drive.jpg" alt="">
-                        <img class="crew-pick-img" src="..\watchlist-page\images\into-spider-verse.jpg" alt="">
-                        <img class="crew-pick-img" src="..\watchlist-page\images\social-network.jpg" alt="">
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[2] %>">
+                            <img src= <%= storeMovie[arrayOfID[2]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[1] %>">
+                            <img src= <%= storeMovie[arrayOfID[1]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[3] %>">
+                            <img src= <%= storeMovie[arrayOfID[3]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[0] %>">
+                            <img src= <%= storeMovie[arrayOfID[0]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[5] %>">
+                            <img src= <%= storeMovie[arrayOfID[5]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+
+                        <a href="http://localhost:3000/film?id=<%=arrayOfID[6] %>">
+                            <img src= <%= storeMovie[arrayOfID[6]]  %>  class="crew-pick-img" alt="...">
+                        </a>
+                        
             
                     </div>
                     </div>

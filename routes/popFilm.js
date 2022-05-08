@@ -28,17 +28,49 @@ router.get('/', (req, res)=>{
     (async () => {
         try {
           const movie = await mdb.movie.getPopular();
-          
           const arrayOfPop = movie['data']['results']  
           const storeMovie = {}
           const arrayOfID = []
+          const movieNames = []
           arrayOfPop.forEach(element => {
               storeMovie[element.id] = "https://image.tmdb.org/t/p/original" + element.poster_path
             arrayOfID.push(element.id)
+            movieNames.push(element.original_title)
           });
-        //   const reviews = await mdb.movie.getReviews(127585);
-        res.render('popFilm', {storeMovie : storeMovie, arrayOfID : arrayOfID})
-          console.log(storeMovie)
+
+          const authorName = []
+          const args = {
+            pathParameters: {
+              movie_id: arrayOfID[0],
+            },
+          };
+          
+          const movieReviews = await mdb.movie.getReviews(args);
+          const movRev1 = movieReviews['data']['results'][0];
+
+
+          const args2 = {
+            pathParameters: {
+              movie_id: arrayOfID[1],
+            },
+          };
+
+          const movieReviews2 = await mdb.movie.getReviews(args2);
+          const movRev2 = movieReviews2['data']['results'][0];
+
+
+          const args3 = {
+            pathParameters: {
+              movie_id: arrayOfID[2],
+            },
+          };
+
+          const movieReviews3 = await mdb.movie.getReviews(args3);
+          const movRev3 = movieReviews3['data']['results'][0];
+
+      
+        res.render('popFilm', {storeMovie : storeMovie, arrayOfID : arrayOfID, movRev1 : movRev1, movRev2 : movRev2 , movRev3 : movRev3 , movieNames : movieNames})
+          // console.log(storeMovie)
         } catch (error) {
           console.error(error);
         }
