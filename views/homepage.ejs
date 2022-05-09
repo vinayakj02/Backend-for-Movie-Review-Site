@@ -16,6 +16,14 @@
 
 </head>
 
+<script>
+    function onSearch(){
+        console.log("searching");
+                var searchVal = document.getElementById("searchQ").value;
+                // console.log(searchVal);
+                window.location.replace("http://localhost:3000/search?keyword=" + searchVal);
+            }
+</script>
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Meie+Script|Shadows+Into+Light|Arvo|Monda');
@@ -128,7 +136,8 @@ img{
                 
                 <form class="form-inline">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" id ="searchQ" type="text" placeholder="Search" aria-label="Search">
+                    <button onclick="onSearch()" type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">search</button>
                 </div>
                 
                 </form>
@@ -163,7 +172,7 @@ img{
 
                     <!-- Description -->
                     <h4 class="white-text my-4 intro-text">Track films you've watched.Save those you want to see. Tell your friends what's good.  </h4>
-                    <a href="../Sign-Up/Sign-up.html"><button type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">Get Started</button></a>
+                    <a href="http://localhost:3000/register"><button type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">Get Started</button></a>
 
                 </div>
 
