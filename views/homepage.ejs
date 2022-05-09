@@ -16,14 +16,6 @@
 
 </head>
 
-<script>
-    function onSearch(){
-        console.log("searching");
-                var searchVal = document.getElementById("searchQ").value;
-                // console.log(searchVal);
-                window.location.replace("http://localhost:3000/search?keyword=" + searchVal);
-            }
-</script>
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Meie+Script|Shadows+Into+Light|Arvo|Monda');
@@ -119,15 +111,15 @@ img{
             <a class="navbar-brand" href="http://localhost:3000/homepage" style="color: #9ABBCC;">MOVIE SITE</a>
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../Sign-Up/Sign-up.html" style="color: #9ABBCC;">SIGN UP
+                    <a class="nav-link" href="register" style="color: #9ABBCC;">SIGN UP
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Log-In/Log-In.html" style="color: #000000;">LOG IN</a>
+                    <a class="nav-link" href="login" style="color: #000000;">LOG IN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../FilmPage/Film.html">MOVIES</a>
+                    <a class="nav-link" href="popFilm">MOVIES</a>
                 </li>
                 
         
@@ -136,8 +128,7 @@ img{
                 
                 <form class="form-inline">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" id ="searchQ" type="text" placeholder="Search" aria-label="Search">
-                    <button onclick="onSearch()" type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">search</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 </div>
                 
                 </form>
@@ -172,7 +163,7 @@ img{
 
                     <!-- Description -->
                     <h4 class="white-text my-4 intro-text">Track films you've watched.Save those you want to see. Tell your friends what's good.  </h4>
-                    <a href="http://localhost:3000/register"><button type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">Get Started</button></a>
+                    <a href="login"><button type="button" class="btn btn-light" style="border: #15191E; border-radius: 10%; color: #ffffff; font-weight: 500; background-color: #15B030;">Get Started</button></a>
 
                 </div>
 
@@ -255,22 +246,22 @@ img{
     </div>    
 
     <section id="movie-list" style="margin-left: 100px;">      
-                <div style="margin-left: 5%;" class="card">
-                    <!-- <img src="..\watchlist-page\images\alien-3.jpg" class="card-img" alt="..."> -->
-                    <img src= <%= storeMovie[arrayOfID[4]]  %>  class="card-img" alt="...">
-                </div>
-                <div class="card">
-                    <!-- <img src="..\watchlist-page\images\dunkirk.jpg" class="card-img" alt="..."> -->
-                    <img src= <%= storeMovie[arrayOfID[1]]  %>  class="card-img" alt="...">
-                </div>
-                <div class="card">
-                    <!-- <img src="..\watchlist-page\images\superbad.jpg" class="card-img" alt="..."> -->
-                    <img src= <%= storeMovie[arrayOfID[2]]  %>  class="card-img" alt="...">
-                </div>
-                <div class="card">
-                    <!-- <img src="..\watchlist-page\images\scott-p.jpg" class="card-img" alt="..."> -->
-                    <img src= <%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="...">
-                </div>
+        <div style="margin-left: 5%;" class="card">
+            <!-- <img src="..\watchlist-page\images\alien-3.jpg" class="card-img" alt="..."> -->
+            <img src= <%= storeMovie[arrayOfID[4]]  %>  class="card-img" alt="...">
+        </div>
+        <div class="card">
+            <!-- <img src="..\watchlist-page\images\dunkirk.jpg" class="card-img" alt="..."> -->
+            <img src= <%= storeMovie[arrayOfID[1]]  %>  class="card-img" alt="...">
+        </div>
+        <div class="card">
+            <!-- <img src="..\watchlist-page\images\superbad.jpg" class="card-img" alt="..."> -->
+            <img src= <%= storeMovie[arrayOfID[2]]  %>  class="card-img" alt="...">
+        </div>
+        <div class="card">
+            <!-- <img src="..\watchlist-page\images\scott-p.jpg" class="card-img" alt="..."> -->
+            <img src= <%= storeMovie[arrayOfID[3]]  %>  class="card-img" alt="...">
+        </div>
     </section>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
